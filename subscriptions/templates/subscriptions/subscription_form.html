@@ -6,9 +6,9 @@
 
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <meta name="description" content="EventIF - O maior encontro dos IFs do mundo!">
+        <meta name="description" content="EventeIF - O maior encontro dos IFs do mundo!">
         <meta name="author" content="cleber">
-        <meta name="viewpodevrt" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 
         <!-- Favicon -->
         <link rel="shortcut icon" href="{% static 'img/favicon.ico' %}">
@@ -19,14 +19,29 @@
         <link rel="stylesheet" href="{% static 'css/main.css' %}">
 
         <link href='http://fonts.googleapis.com/css?family=Economica:400,700' rel='stylesheet' type='text/css'>
-
+        <style>
+            .alert {
+                padding: 0 15px;
+                margin-bottom: 1rem;
+                border: 1px solid transparent;
+                border-radius: .25rem;
+            }
+            .alert p {
+                padding: 7px 0 7px;
+            }
+            .alert.success {
+                color: #3c763d;
+                background-color: #dff0d8;
+                border-color: #d0e9c6;
+            }
+        </style>
 	</head>
 
 	<body>
         <div class="header-frame row">
             <header class="header header-inline min-h-3 row desktop-12 container" role="banner">
 
-                <div clasdevs="site-logo">
+                <div class="site-logo">
                     <h1><a href="/" rel="home">EventIF</h1>
                     <p class="site-description screen-reader-only">O maior encontro dos IFs do mundo!</p>
                 </div>
@@ -50,6 +65,13 @@
         	<div class="content row padding-bottom-3 desktop-12 container">
                 <h1>Formulário de Inscrição</h1>
                 <div class="desktop-6">
+                    {% if messages %}
+                        {% for m in messages %}
+                            <div class="alert success">
+                                <p>{{ m }}</p>
+                            </div>
+                        {% endfor %}
+                    {% endif %}
                     <form action="." novalidate method="post">
                         {% csrf_token %}
                         <div class="form-row label-block input-text">
@@ -75,7 +97,7 @@
                         <p class="btn-row"><input type="submit" value="Enviar!"/></p>
                     </form>
                 </div>
-            </div>dev
+            </div>
         </section>
 
     </body>
