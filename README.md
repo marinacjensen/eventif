@@ -1,14 +1,4 @@
-# EventIF
-
-Sistema do evento do IF que está sendo desenvolvido na disciplina de Desenvolvimento de Sistemas 2.
-
-## Como desenvolver
-1. Clone o repositório
-2. Crie um virtualenv com python 3.10 ou superior
-3. Ative o virtualenv
-4. Istale as dependências
-5. Configure a instância com o arquivo .env
-6. Execute os testes
+# eventif-dsII
 
 ```console
 git clone git@github.com:marinacjensenn/eventif
