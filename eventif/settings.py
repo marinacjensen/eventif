@@ -13,6 +13,7 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 from pathlib import Path
 from decouple import config, Csv
 from dj_database_url import parse as dburl
+import dj_database_url
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -44,6 +45,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'test_without_migrations',
+    'django_extensions',
     'core',
     'subscriptions.apps.SubscriptionsConfig',
     'contact',
@@ -85,7 +87,7 @@ WSGI_APPLICATION = 'eventif.wsgi.application'
 default_dburl = "sqlite:///" + str(BASE_DIR / 'db.sqlite3')
 
 DATABASES = {
-    "default": config('DATABASE_URL', default=default_dburl, cast=dburl)
+    "default": config('DATABASE_URL', default=default_dburl, cast=dburl),
 }
 
 
@@ -113,7 +115,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'pt-br'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'America/Sao_Paulo'
 
 USE_I18N = True
 
@@ -132,7 +134,7 @@ STATIC_ROOT = str(BASE_DIR / 'staticfiles')
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-#EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
+# EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
 EMAIL_BACKEND = config('EMAIL_BACKEND')
 EMAIL_HOST = config('EMAIL_HOST')
 EMAIL_PORT = config('EMAIL_PORT', cast=int)

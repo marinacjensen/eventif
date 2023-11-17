@@ -4,14 +4,11 @@
 <section>
 	<div class="speakers content row padding-bottom-3 desktop-8 container">
 		<h2>
-			<a href="https://pt.wikipedia.org/wiki/Grace_Hopper">Grace Hopper</a>
+			<a href="{{ speaker.website }}">{{ speaker.name }}</a>
 		</h2>
-		<img class="photo" src="https://cleberfonseca.com.br/img/hopper">
+		<img class="photo" src="{{ speaker.photo }}">
 		<p>
-			Programadora e almirante. <br/>
-            Inventora do compilador, criadora da linguagem
-            de programação Flow-Matic serviu de base para a linguagem
-            COBOL permitindo a popularização de aplicações comerciais.
+			{{ speaker.description|linebreaks }}
 		</p>
 	</div>
 </section>

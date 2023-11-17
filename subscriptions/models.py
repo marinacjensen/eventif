@@ -2,7 +2,6 @@ from django.db import models
 from subscriptions.validators import validate_cpf
 
 
-
 class Subscription(models.Model):
     name = models.CharField('nome', max_length=200)
     cpf = models.CharField('CPF', max_length=11, validators=[validate_cpf])

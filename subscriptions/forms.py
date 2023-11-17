@@ -5,7 +5,6 @@ from subscriptions.validators import validate_cpf
 
 
 class SubscriptionForm(forms.ModelForm):
-
     class Meta:
         model = Subscription
         fields = ['name', 'cpf', 'email', 'phone']
