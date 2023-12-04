@@ -18,7 +18,7 @@ from django.contrib import admin
 from django.urls import path, include
 
 from core.views import home, speaker_detail, talk_list
-from contacts.views import contact
+from contact.views import contact
 
 urlpatterns = [
     path('', home, name='home'),
