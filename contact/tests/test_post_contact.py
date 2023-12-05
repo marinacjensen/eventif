@@ -5,9 +5,9 @@ from django.core import mail
 class ContactPostValid(TestCase):
     def setUp(self):
         data = dict(name="Marina Jensen",  
-                    email="marinacjensen0803@gmail.com",
-                    phone="53-98119-4014",
-                    message="Olá EventIF")
+                    email="marina.jensen@mail.com",
+                    phone='53 91234-5678',
+                    msg='Olá mundo!')
         
         self.response = self.client.post('/contato/', data)
 
@@ -37,10 +37,10 @@ class ContactPostInvalid(TestCase):
 
 class ContactEmailValid(TestCase):
     def setUp(self):
-        data = dict(name="Marina Jensen",
-                    email="marinacjensen0803@gmail.com",
-                    phone="53981194014",
-                    message='Olá EventIF!')
+        data = dict(name="Marina Jensen",  
+                    email="marina.jensen@mail.com",
+                    phone='53 91234-5678',
+                    msg='Olá mundo!')
         
         self.response = self.client.post('/contato/', data)
         self.email = mail.outbox[0]
@@ -51,15 +51,15 @@ class ContactEmailValid(TestCase):
         self.assertEqual(esperado, self.email.subject)
 
     def test_contact_email_sender(self):
-        esperado = "marinacjensen0803@gmail.com"
+        esperado = "marina.jensen@mail.com"
         self.assertEqual(esperado, self.email.from_email)
 
     def test_contact_email_to(self):
-        esperado = ['contato@eventif.com.br', 'marinacjensen0803@gmail.com']
+        esperado = ['contato@eventif.com.br', 'marina.jensen@mail.com']
         self.assertEqual(esperado, self.email.to)
 
     def test_contact_email_message(self):
-        contents = ('Marina Jensen', 'marinacjensen0803@gmail.com', '53981194014', 'Olá EventIF!')
+        contents = ('Marina Jensen', 'marina.jensen@mail.com', '53 91234-5678', 'Olá mundo!')
         for content in contents:
             with self.subTest():
                 self.assertIn(content, self.email.body)

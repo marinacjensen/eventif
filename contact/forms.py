@@ -1,7 +1,13 @@
 from django import forms
+from contact.models import Contact
 
-class ContactForm(forms.Form):
-    name = forms.CharField(label="Nome:")
-    email = forms.EmailField(label="E-mail:")
-    phone = forms.CharField(label="Telefone:", required=False)
-    message = forms.CharField(label="Mensagem:", widget=forms.Textarea)
+
+class ContactForm(forms.ModelForm):
+    class Meta:
+        model = Contact
+        fields = ['name', 'email', 'phone', 'message']
+
+    def clean_name(self):
+        name = self.cleaned_data['name']
+        words = [w.capitalize() for w in name.split()]
+        return ' '.join(words)

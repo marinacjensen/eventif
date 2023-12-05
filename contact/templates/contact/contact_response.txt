@@ -1,4 +1,4 @@
-Oi {{ name }} seu contato foi respondido.
+Oi, {{ name }}, seu contato foi respondido.
 
 Telefone: {{ phone }}
 Email: {{ email }}
