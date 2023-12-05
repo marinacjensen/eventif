@@ -7,7 +7,7 @@ class ContactPostValid(TestCase):
         data = dict(name="Marina Jensen",  
                     email="marina.jensen@mail.com",
                     phone='53 91234-5678',
-                    msg='Olá mundo!')
+                    message='Olá mundo!')
         
         self.response = self.client.post('/contato/', data)
 
@@ -40,7 +40,7 @@ class ContactEmailValid(TestCase):
         data = dict(name="Marina Jensen",  
                     email="marina.jensen@mail.com",
                     phone='53 91234-5678',
-                    msg='Olá mundo!')
+                    message='Olá mundo!')
         
         self.response = self.client.post('/contato/', data)
         self.email = mail.outbox[0]
